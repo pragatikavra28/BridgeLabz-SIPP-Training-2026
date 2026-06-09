@@ -1,0 +1,1 @@
+import java.util.Scanner; public class PowerWhile{ public static void main(String[] args){ Scanner sc=new Scanner(System.in); int number=sc.nextInt(),power=sc.nextInt(),counter=0; long result=1; while(counter<power){ result*=number; counter++; } System.out.println(result); }}
