@@ -1,0 +1,22 @@
+Challenge 1
+CREATE DATABASE covid_db;
+-- Output:
+Query OK, 1 row affected
+
+USE covid_db;
+-- Output:
+Database changed
+
+CREATE TABLE covid_cases (
+ id INT AUTO_INCREMENT PRIMARY KEY,
+ date DATE,
+ time VARCHAR(20),
+ state VARCHAR(100),
+ confirmed_indian_national INT,
+ confirmed_foreign_national INT,
+ recoveries INT,
+ deaths INT,
+ confirmed_cases INT
+);
+-- Output:
+Query OK, 0 rows affected
