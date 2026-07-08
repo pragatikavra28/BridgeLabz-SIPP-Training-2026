@@ -1,1 +1,0 @@
-import java.util.*; public class SmartParkingSlotManager{public static void main(String[]a){ArrayList<String> v=new ArrayList<>();v.add("UP14AB1234");v.add("DL01XY9999");System.out.println(v.contains("UP14AB1234"));v.remove("DL01XY9999");for(String s:v)System.out.println(s);System.out.println("Occupied: "+v.size());}}

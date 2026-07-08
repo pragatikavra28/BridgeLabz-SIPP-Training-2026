@@ -1,1 +1,0 @@
-import java.util.*; public class EventEntryVerificationSystem{public static void main(String[]a){HashSet<String>s=new HashSet<>();String[]e={"a@x.com","b@x.com","a@x.com"};for(String x:e)System.out.println(s.add(x)?"Registered":"Duplicate");System.out.println(s);System.out.println("Total: "+s.size());}}
