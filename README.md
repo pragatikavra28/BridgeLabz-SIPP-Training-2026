@@ -1,6 +1,6 @@
 # 🚀 BridgeLabz SIPP Training 2026
 
-> A comprehensive repository containing my daily coding practice, Java fundamentals, Data Structures & Algorithms, Object-Oriented Programming, and problem-solving solutions completed during the **BridgeLabz SIPP (Summer Internship Preparation Program) 2026**.
+> A comprehensive repository containing my daily coding practice, Java fundamentals, Data Structures & Algorithms, Object-Oriented Programming, and problem-solving solutions completed during the **BridgeLabz SIPP (Summer Immersion Placement Program) 2026**.
 
 ---
 
