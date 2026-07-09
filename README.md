@@ -157,12 +157,4 @@ This repository is updated regularly as I progress through the training program 
 - Debugging
 
 
-## ⭐ Support
-
-If you found this repository helpful, don't forget to **Star ⭐ the repository**.
-
-It motivates me to continue learning and sharing my progress!
-
----
-
 ### Happy Coding! 🚀
