@@ -1,0 +1,56 @@
+Session 3, Question 4: Calculate Average New Deaths Per Day
+
+SQL Query:
+------------------------------------------------------------
+WITH daily AS (
+    SELECT Date, SUM(Deaths) AS Total_Deaths
+    FROM covid_cases
+    WHERE Date BETWEEN '2020-04-01' AND '2020-04-10'
+    GROUP BY Date
+),
+diffs AS (
+    SELECT Date, Total_Deaths - LAG(Total_Deaths) OVER (ORDER BY Date) AS New_Deaths
+    FROM daily
+)
+SELECT Date, New_Deaths FROM diffs ORDER BY Date;
+
+SELECT ROUND(AVG(New_Deaths), 2) AS Avg_New_Deaths_Per_Day
+FROM diffs WHERE New_Deaths IS NOT NULL;
+
+Terminal Execution (MySQL CLI):
+------------------------------------------------------------
+mysql> WITH daily AS (
+    ->     SELECT Date, SUM(Deaths) AS Total_Deaths
+    ->     FROM covid_cases
+    ->     WHERE Date BETWEEN '2020-04-01' AND '2020-04-10'
+    ->     GROUP BY Date
+    -> ),
+    -> diffs AS (
+    ->     SELECT Date, Total_Deaths - LAG(Total_Deaths) OVER (ORDER BY Date) AS New_Deaths
+    ->     FROM daily
+    -> )
+    -> SELECT Date, New_Deaths FROM diffs ORDER BY Date;
++------------+------------+
+| Date       | New_Deaths |
++------------+------------+
+| 2020-04-01 | NULL       |
+| 2020-04-02 | 12         |
+| 2020-04-03 | 5          |
+| 2020-04-04 | 13         |
+| 2020-04-05 | 8          |
+| 2020-04-06 | 28         |
+| 2020-04-07 | 13         |
+| 2020-04-08 | 25         |
+| 2020-04-09 | 20         |
+| 2020-04-10 | 37         |
++------------+------------+
+10 rows in set (0.02 sec)
+
+mysql> SELECT ROUND(AVG(New_Deaths), 2) AS Avg_New_Deaths_Per_Day
+    -> FROM diffs WHERE New_Deaths IS NOT NULL;
++------------------------+
+| Avg_New_Deaths_Per_Day |
++------------------------+
+| 17.89                  |
++------------------------+
+1 row in set (0.02 sec)

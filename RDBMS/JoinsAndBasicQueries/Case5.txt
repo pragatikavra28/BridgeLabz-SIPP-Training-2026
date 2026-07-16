@@ -1,9 +1,0 @@
-SELECT c.country_name,
-       c.population,
-       MAX(cc.confirmed_cases) AS total_confirmed_cases,
-       ROUND((MAX(cc.confirmed_cases) * 100.0 / c.population), 2) AS infection_rate
-FROM covid_cases cc
-INNER JOIN countries c
-ON cc.country_id = c.country_id
-GROUP BY c.country_name, c.population
-ORDER BY infection_rate DESC;

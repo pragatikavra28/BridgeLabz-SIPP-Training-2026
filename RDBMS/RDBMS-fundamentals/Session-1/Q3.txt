@@ -1,0 +1,39 @@
+Session 1, Question 3: Update Case Information
+
+SQL Query:
+------------------------------------------------------------
+SELECT State, Date, Confirmed_Cases FROM covid_cases
+WHERE State = 'Kerala' AND Date = '2021-08-11';
+
+UPDATE covid_cases
+SET Confirmed_Cases = 3586700
+WHERE State = 'Kerala' AND Date = '2021-08-11';
+
+SELECT State, Date, Confirmed_Cases FROM covid_cases
+WHERE State = 'Kerala' AND Date = '2021-08-11';
+
+Terminal Execution (MySQL CLI):
+------------------------------------------------------------
+mysql> SELECT State, Date, Confirmed_Cases FROM covid_cases
+    -> WHERE State = 'Kerala' AND Date = '2021-08-11';
++--------+------------+-----------------+
+| State  | Date       | Confirmed_Cases |
++--------+------------+-----------------+
+| Kerala | 2021-08-11 | 3586693         |
++--------+------------+-----------------+
+1 row in set (0.00 sec)
+
+mysql> UPDATE covid_cases
+    -> SET Confirmed_Cases = 3586700
+    -> WHERE State = 'Kerala' AND Date = '2021-08-11';
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT State, Date, Confirmed_Cases FROM covid_cases
+    -> WHERE State = 'Kerala' AND Date = '2021-08-11';
++--------+------------+-----------------+
+| State  | Date       | Confirmed_Cases |
++--------+------------+-----------------+
+| Kerala | 2021-08-11 | 3586700         |
++--------+------------+-----------------+
+1 row in set (0.00 sec)

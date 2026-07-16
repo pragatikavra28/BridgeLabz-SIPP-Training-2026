@@ -1,0 +1,32 @@
+Session 2, Question 3: Add Constraints to Ensure Data Quality
+
+SQL Query:
+------------------------------------------------------------
+ALTER TABLE covid_cases
+    MODIFY State VARCHAR(100) NOT NULL,
+    MODIFY Date DATE NOT NULL,
+    MODIFY Confirmed_Cases INT NOT NULL;
+
+ALTER TABLE covid_cases
+ADD CONSTRAINT chk_deaths_le_cases CHECK (Deaths <= Confirmed_Cases);
+
+-- attempt to insert a record that violates the CHECK constraint
+INSERT INTO covid_cases (State, Date, Confirmed_Cases, Deaths)
+VALUES ('Delhi', '2021-08-12', 100, 500);
+
+Terminal Execution (MySQL CLI):
+------------------------------------------------------------
+mysql> ALTER TABLE covid_cases
+    ->     MODIFY State VARCHAR(100) NOT NULL,
+    ->     MODIFY Date DATE NOT NULL,
+    ->     MODIFY Confirmed_Cases INT NOT NULL;
+Query OK, 18110 rows affected (0.22 sec)
+Records: 18110  Duplicates: 0  Warnings: 0
+
+mysql> ALTER TABLE covid_cases
+    -> ADD CONSTRAINT chk_deaths_le_cases CHECK (Deaths <= Confirmed_Cases);
+Query OK, 0 rows affected (0.09 sec)
+
+mysql> INSERT INTO covid_cases (State, Date, Confirmed_Cases, Deaths)
+    -> VALUES ('Delhi', '2021-08-12', 100, 500);
+ERROR 3819 (HY000): Check constraint 'chk_deaths_le_cases' is violated.

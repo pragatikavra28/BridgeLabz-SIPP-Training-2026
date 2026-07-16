@@ -1,0 +1,34 @@
+Session 2, Question 4: Set Default Values
+
+SQL Query:
+------------------------------------------------------------
+ALTER TABLE covid_cases
+    MODIFY Recoveries INT NOT NULL DEFAULT 0,
+    ADD COLUMN Last_Updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
+
+INSERT INTO covid_cases (State, Date, Confirmed_Cases)
+VALUES ('Goa', '2021-08-12', 500);
+
+SELECT State, Date, Confirmed_Cases, Recoveries, Last_Updated
+FROM covid_cases WHERE State = 'Goa' AND Date = '2021-08-12';
+
+Terminal Execution (MySQL CLI):
+------------------------------------------------------------
+mysql> ALTER TABLE covid_cases
+    ->     MODIFY Recoveries INT NOT NULL DEFAULT 0,
+    ->     ADD COLUMN Last_Updated TIMESTAMP DEFAULT CURRENT_TIMESTAMP;
+Query OK, 18110 rows affected (0.18 sec)
+Records: 18110  Duplicates: 0  Warnings: 0
+
+mysql> INSERT INTO covid_cases (State, Date, Confirmed_Cases)
+    -> VALUES ('Goa', '2021-08-12', 500);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT State, Date, Confirmed_Cases, Recoveries, Last_Updated
+    -> FROM covid_cases WHERE State = 'Goa' AND Date = '2021-08-12';
++-------+------------+-----------------+------------+---------------------+
+| State | Date       | Confirmed_Cases | Recoveries | Last_Updated        |
++-------+------------+-----------------+------------+---------------------+
+| Goa   | 2021-08-12 | 500             | 0          | 2026-07-16 10:42:07 |
++-------+------------+-----------------+------------+---------------------+
+1 row in set (0.00 sec)

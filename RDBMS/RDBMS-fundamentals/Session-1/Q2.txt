@@ -1,0 +1,53 @@
+Session 1, Question 2: Insert Initial COVID Data
+
+SQL Query:
+------------------------------------------------------------
+INSERT INTO covid_cases (State, Date, Confirmed_Cases, Deaths, Recoveries) VALUES
+('Kerala',      '2020-01-30', 1, 0, 0),
+('Kerala',      '2020-01-31', 1, 0, 0),
+('Kerala',      '2020-02-01', 2, 0, 0),
+('Delhi',       '2020-03-02', 1, 0, 0),
+('Delhi',       '2020-03-03', 1, 0, 0),
+('Delhi',       '2020-03-04', 1, 0, 0),
+('Maharashtra', '2020-03-09', 2, 0, 0),
+('Maharashtra', '2020-03-10', 5, 0, 0),
+('Maharashtra', '2020-03-11', 2, 0, 0);
+
+SELECT * FROM covid_cases
+WHERE State IN ('Kerala','Delhi','Maharashtra')
+ORDER BY State, Date
+LIMIT 9;
+
+Terminal Execution (MySQL CLI):
+------------------------------------------------------------
+mysql> INSERT INTO covid_cases (State, Date, Confirmed_Cases, Deaths, Recoveries) VALUES
+    -> ('Kerala',      '2020-01-30', 1, 0, 0),
+    -> ('Kerala',      '2020-01-31', 1, 0, 0),
+    -> ('Kerala',      '2020-02-01', 2, 0, 0),
+    -> ('Delhi',       '2020-03-02', 1, 0, 0),
+    -> ('Delhi',       '2020-03-03', 1, 0, 0),
+    -> ('Delhi',       '2020-03-04', 1, 0, 0),
+    -> ('Maharashtra', '2020-03-09', 2, 0, 0),
+    -> ('Maharashtra', '2020-03-10', 5, 0, 0),
+    -> ('Maharashtra', '2020-03-11', 2, 0, 0);
+Query OK, 9 rows affected (0.01 sec)
+Records: 9  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM covid_cases
+    -> WHERE State IN ('Kerala','Delhi','Maharashtra')
+    -> ORDER BY State, Date
+    -> LIMIT 9;
++-------------+------------+-----------------+--------+------------+
+| State       | Date       | Confirmed_Cases | Deaths | Recoveries |
++-------------+------------+-----------------+--------+------------+
+| Delhi       | 2020-03-02 | 1               | 0      | 0          |
+| Delhi       | 2020-03-03 | 1               | 0      | 0          |
+| Delhi       | 2020-03-04 | 1               | 0      | 0          |
+| Kerala      | 2020-01-30 | 1               | 0      | 0          |
+| Kerala      | 2020-01-31 | 1               | 0      | 0          |
+| Kerala      | 2020-02-01 | 2               | 0      | 0          |
+| Maharashtra | 2020-03-09 | 2               | 0      | 0          |
+| Maharashtra | 2020-03-10 | 5               | 0      | 0          |
+| Maharashtra | 2020-03-11 | 2               | 0      | 0          |
++-------------+------------+-----------------+--------+------------+
+9 rows in set (0.00 sec)

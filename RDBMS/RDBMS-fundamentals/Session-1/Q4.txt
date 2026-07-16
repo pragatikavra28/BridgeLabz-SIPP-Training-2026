@@ -1,0 +1,30 @@
+Session 1, Question 4: Delete Incorrect Records
+
+SQL Query:
+------------------------------------------------------------
+SELECT COUNT(*) AS cnt FROM covid_cases WHERE State = 'Telengana';
+
+DELETE FROM covid_cases WHERE State = 'Telengana';
+
+SELECT COUNT(*) AS cnt FROM covid_cases WHERE State = 'Telengana';
+
+Terminal Execution (MySQL CLI):
+------------------------------------------------------------
+mysql> SELECT COUNT(*) AS cnt FROM covid_cases WHERE State = 'Telengana';
++-----+
+| cnt |
++-----+
+| 426 |
++-----+
+1 row in set (0.00 sec)
+
+mysql> DELETE FROM covid_cases WHERE State = 'Telengana';
+Query OK, 426 rows affected (0.02 sec)
+
+mysql> SELECT COUNT(*) AS cnt FROM covid_cases WHERE State = 'Telengana';
++-----+
+| cnt |
++-----+
+| 0   |
++-----+
+1 row in set (0.00 sec)

@@ -1,6 +1,0 @@
-DELETE FROM covid_cases
-WHERE state='IN';
-
--- Output:
-Query OK, 1 row affected
-(or 0 rows affected if no matching row exists)

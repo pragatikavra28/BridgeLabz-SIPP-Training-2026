@@ -1,0 +1,38 @@
+Session 3, Question 2: Join COVID Deaths and Vaccination Data
+
+SQL Query:
+------------------------------------------------------------
+SELECT d.State, d.Date, d.Deaths,
+       v.Total_Doses_Administered, v.First_Dose_Administered
+FROM covid_deaths d
+LEFT JOIN covid_vaccines v
+       ON d.State = v.State AND d.Date = v.Date
+WHERE d.Date = '2021-01-16'
+ORDER BY d.State
+LIMIT 10;
+
+Terminal Execution (MySQL CLI):
+------------------------------------------------------------
+mysql> SELECT d.State, d.Date, d.Deaths,
+    ->        v.Total_Doses_Administered, v.First_Dose_Administered
+    -> FROM covid_deaths d
+    -> LEFT JOIN covid_vaccines v
+    ->        ON d.State = v.State AND d.Date = v.Date
+    -> WHERE d.Date = '2021-01-16'
+    -> ORDER BY d.State
+    -> LIMIT 10;
++------------------------------------------+------------+--------+--------------------------+-------------------------+
+| State                                    | Date       | Deaths | Total_Doses_Administered | First_Dose_Administered |
++------------------------------------------+------------+--------+--------------------------+-------------------------+
+| Andaman and Nicobar Islands              | 2021-01-16 | 62     | NULL                     | NULL                    |
+| Andhra Pradesh                           | 2021-01-16 | 7139   | NULL                     | NULL                    |
+| Arunachal Pradesh                        | 2021-01-16 | 56     | NULL                     | NULL                    |
+| Assam                                    | 2021-01-16 | 1066   | NULL                     | NULL                    |
+| Bihar                                    | 2021-01-16 | 1449   | NULL                     | NULL                    |
+| Chandigarh                               | 2021-01-16 | 330    | NULL                     | NULL                    |
+| Chhattisgarh                             | 2021-01-16 | 3544   | NULL                     | NULL                    |
+| Dadra and Nagar Haveli and Daman and Diu | 2021-01-16 | 2      | NULL                     | NULL                    |
+| Delhi                                    | 2021-01-16 | 10732  | 892                      | 892                     |
+| Goa                                      | 2021-01-16 | 753    | NULL                     | NULL                    |
++------------------------------------------+------------+--------+--------------------------+-------------------------+
+10 rows in set (0.02 sec)

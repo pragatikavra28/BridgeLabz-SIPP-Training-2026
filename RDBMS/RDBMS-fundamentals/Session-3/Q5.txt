@@ -1,0 +1,49 @@
+Session 3, Question 5: Find Regions with Highest Infection Rates
+
+SQL Query:
+------------------------------------------------------------
+UPDATE covid_cases SET Population = 35699443  WHERE State = 'Kerala';
+UPDATE covid_cases SET Population = 16787941  WHERE State = 'Delhi';
+UPDATE covid_cases SET Population = 112374333 WHERE State = 'Maharashtra';
+UPDATE covid_cases SET Population = 61095297  WHERE State = 'Karnataka';
+UPDATE covid_cases SET Population = 72147030  WHERE State = 'Tamil Nadu';
+
+SELECT State, Confirmed_Cases, Population,
+       ROUND((Confirmed_Cases / Population) * 100, 4) AS Infection_Rate
+FROM covid_cases
+WHERE Date = '2021-08-11' AND Population IS NOT NULL
+ORDER BY Infection_Rate DESC;
+
+Terminal Execution (MySQL CLI):
+------------------------------------------------------------
+mysql> UPDATE covid_cases SET Population = 35699443  WHERE State = 'Kerala';
+Query OK, 427 rows affected (0.03 sec)
+Rows matched: 427  Changed: 427  Warnings: 0
+
+mysql> UPDATE covid_cases SET Population = 16787941  WHERE State = 'Delhi';
+Query OK, 462 rows affected (0.02 sec)
+
+mysql> UPDATE covid_cases SET Population = 112374333 WHERE State = 'Maharashtra';
+Query OK, 459 rows affected (0.02 sec)
+
+mysql> UPDATE covid_cases SET Population = 61095297  WHERE State = 'Karnataka';
+Query OK, 451 rows affected (0.02 sec)
+
+mysql> UPDATE covid_cases SET Population = 72147030  WHERE State = 'Tamil Nadu';
+Query OK, 461 rows affected (0.02 sec)
+
+mysql> SELECT State, Confirmed_Cases, Population,
+    ->        ROUND((Confirmed_Cases / Population) * 100, 4) AS Infection_Rate
+    -> FROM covid_cases
+    -> WHERE Date = '2021-08-11' AND Population IS NOT NULL
+    -> ORDER BY Infection_Rate DESC;
++-------------+-----------------+------------+----------------+
+| State       | Confirmed_Cases | Population | Infection_Rate |
++-------------+-----------------+------------+----------------+
+| Kerala      | 3586700         | 35699443   | 10.0469        |
+| Delhi       | 1436852         | 16787941   | 8.5588         |
+| Maharashtra | 6363442         | 112374333  | 5.6627         |
+| Karnataka   | 2921049         | 61095297   | 4.7811         |
+| Tamil Nadu  | 2579130         | 72147030   | 3.5748         |
++-------------+-----------------+------------+----------------+
+5 rows in set (0.01 sec)

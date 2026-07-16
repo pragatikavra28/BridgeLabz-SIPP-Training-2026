@@ -1,0 +1,25 @@
+Session 2, Question 5: Prevent Duplicate Region-Date Entries
+
+SQL Query:
+------------------------------------------------------------
+ALTER TABLE covid_cases
+ADD CONSTRAINT uq_state_date UNIQUE (State, Date);
+
+-- attempt to insert a duplicate (State, Date) pair
+INSERT INTO covid_cases (State, Date, Confirmed_Cases)
+VALUES ('Punjab', '2021-08-12', 305);
+
+Terminal Execution (MySQL CLI):
+------------------------------------------------------------
+mysql> ALTER TABLE covid_cases
+    -> ADD CONSTRAINT uq_state_date UNIQUE (State, Date);
+Query OK, 18110 rows affected (0.20 sec)
+Records: 18110  Duplicates: 0  Warnings: 0
+
+mysql> INSERT INTO covid_cases (State, Date, Confirmed_Cases)
+    -> VALUES ('Punjab', '2021-08-12', 300);
+Query OK, 1 row affected (0.01 sec)
+
+mysql> INSERT INTO covid_cases (State, Date, Confirmed_Cases)
+    -> VALUES ('Punjab', '2021-08-12', 305);
+ERROR 1062 (23000): Duplicate entry 'Punjab-2021-08-12' for key 'covid_cases.uq_state_date'

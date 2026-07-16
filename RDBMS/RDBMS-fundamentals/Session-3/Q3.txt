@@ -1,0 +1,30 @@
+Session 3, Question 3: Analyze Deaths by Continent
+
+SQL Query:
+------------------------------------------------------------
+SELECT s.Region, SUM(c.Deaths) AS Total_Deaths
+FROM covid_cases c
+INNER JOIN states s ON c.State = s.State_Name
+WHERE c.Date = '2021-08-11'
+GROUP BY s.Region
+ORDER BY Total_Deaths DESC;
+
+Terminal Execution (MySQL CLI):
+------------------------------------------------------------
+mysql> SELECT s.Region, SUM(c.Deaths) AS Total_Deaths
+    -> FROM covid_cases c
+    -> INNER JOIN states s ON c.State = s.State_Name
+    -> WHERE c.Date = '2021-08-11'
+    -> GROUP BY s.Region
+    -> ORDER BY Total_Deaths DESC;
++-----------+--------------+
+| Region    | Total_Deaths |
++-----------+--------------+
+| West      | 147446       |
+| South     | 108594       |
+| North     | 99086        |
+| East      | 39593        |
+| Central   | 24058        |
+| Northeast | 10402        |
++-----------+--------------+
+6 rows in set (0.04 sec)

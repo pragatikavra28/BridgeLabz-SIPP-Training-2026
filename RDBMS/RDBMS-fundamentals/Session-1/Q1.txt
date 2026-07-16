@@ -1,0 +1,73 @@
+Session 1, Question 1: Create COVID Database Schema
+
+SQL Query:
+------------------------------------------------------------
+CREATE DATABASE covid_db;
+USE covid_db;
+
+CREATE TABLE covid_cases (
+    State             VARCHAR(100) NOT NULL,
+    Date              DATE NOT NULL,
+    Confirmed_Cases   INT NOT NULL,
+    Deaths            INT NOT NULL DEFAULT 0,
+    Recoveries        INT NOT NULL DEFAULT 0,
+    Population        BIGINT
+);
+
+CREATE TABLE covid_deaths (
+    State   VARCHAR(100) NOT NULL,
+    Date    DATE NOT NULL,
+    Deaths  INT NOT NULL DEFAULT 0
+);
+
+CREATE TABLE covid_vaccines (
+    State                      VARCHAR(100) NOT NULL,
+    Date                       DATE NOT NULL,
+    Total_Doses_Administered  BIGINT,
+    First_Dose_Administered   BIGINT
+);
+
+SHOW TABLES;
+
+Terminal Execution (MySQL CLI):
+------------------------------------------------------------
+mysql> CREATE DATABASE covid_db;
+Query OK, 1 row affected (0.02 sec)
+
+mysql> USE covid_db;
+Database changed
+
+mysql> CREATE TABLE covid_cases (
+    ->     State             VARCHAR(100) NOT NULL,
+    ->     Date              DATE NOT NULL,
+    ->     Confirmed_Cases   INT NOT NULL,
+    ->     Deaths            INT NOT NULL DEFAULT 0,
+    ->     Recoveries        INT NOT NULL DEFAULT 0,
+    ->     Population        BIGINT
+    -> );
+Query OK, 0 rows affected (0.04 sec)
+
+mysql> CREATE TABLE covid_deaths (
+    ->     State   VARCHAR(100) NOT NULL,
+    ->     Date    DATE NOT NULL,
+    ->     Deaths  INT NOT NULL DEFAULT 0
+    -> );
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> CREATE TABLE covid_vaccines (
+    ->     State                      VARCHAR(100) NOT NULL,
+    ->     Date                       DATE NOT NULL,
+    ->     Total_Doses_Administered  BIGINT,
+    ->     First_Dose_Administered   BIGINT
+    -> );
+Query OK, 0 rows affected (0.03 sec)
+
+mysql> SHOW TABLES;
++--------------------+
+| Tables_in_covid_db |
++--------------------+
+| covid_cases        |
+| covid_deaths       |
+| covid_vaccines     |
++--------------------+
+3 rows in set (0.00 sec)

@@ -1,0 +1,25 @@
+Session 3, Question 1: Find Highest Confirmed Cases using INNER JOIN
+
+SQL Query:
+------------------------------------------------------------
+SELECT c.State, s.Region, c.Confirmed_Cases
+FROM covid_cases c
+INNER JOIN states s ON c.State = s.State_Name
+WHERE c.Date = '2021-08-11'
+ORDER BY c.Confirmed_Cases DESC
+LIMIT 1;
+
+Terminal Execution (MySQL CLI):
+------------------------------------------------------------
+mysql> SELECT c.State, s.Region, c.Confirmed_Cases
+    -> FROM covid_cases c
+    -> INNER JOIN states s ON c.State = s.State_Name
+    -> WHERE c.Date = '2021-08-11'
+    -> ORDER BY c.Confirmed_Cases DESC
+    -> LIMIT 1;
++-------------+--------+-----------------+
+| State       | Region | Confirmed_Cases |
++-------------+--------+-----------------+
+| Maharashtra | West   | 6363442         |
++-------------+--------+-----------------+
+1 row in set (0.03 sec)

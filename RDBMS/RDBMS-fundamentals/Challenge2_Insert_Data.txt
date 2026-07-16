@@ -1,6 +1,0 @@
-INSERT INTO covid_cases
-(date,time,state,confirmed_indian_national,confirmed_foreign_national,recoveries,deaths,confirmed_cases)
-VALUES('2020-03-15','10 AM','India',0,0,50,2,100);
-
--- Output:
-Query OK, 1 row affected
