@@ -1,0 +1,15 @@
+SELECT state,
+       date,
+       confirmed_cases,
+       CASE
+           WHEN confirmed_cases =
+           (
+               SELECT MAX(c2.confirmed_cases)
+               FROM covid_cases c2
+               WHERE c2.state = c1.state
+           )
+           THEN 'Peak'
+           ELSE 'Not Peak'
+       END AS covid_wave
+FROM covid_cases c1
+WHERE state = 'Mumbai';
